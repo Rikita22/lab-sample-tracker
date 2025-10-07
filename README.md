@@ -48,10 +48,14 @@ Make sure the following are installed:
    ```sql
    CREATE DATABASE lab_tracker;
    GO
+ 
+---    
    
 ## ⚙️ To run application locally
 1️⃣ To start the Backend
+
 cd backend
+
 mvn spring-boot:run
 
 ✅ The backend will start at
@@ -63,7 +67,9 @@ When it runs for the first time, tables like users and samples are auto-created 
 In a new terminal:
 
 cd frontend
+
 npm install
+
 npm start
 
 
@@ -73,17 +79,25 @@ npm start
 🔐 To register and login
 
 A user needs to be registered (in Postman or frontend)
+
 POST http://localhost:8081/api/auth/register
 
 {
   "username": "YourUsername",
+  
   "password": "YourPassword"
 }
 
 To login (from frontend)
+
 Open http://localhost:3000
+
 Enter your credentials
+
 A JWT token will be generated and saved automatically.
 
+---
+
 ✅ Now you’re ready to run the Lab Sample Tracker locally!
+
 Start both servers, open http://localhost:3000, login, and begin managing your samples.
