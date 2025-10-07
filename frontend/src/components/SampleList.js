@@ -53,7 +53,7 @@ function SampleList() {
         fetchSamples();
     }, []);
 
-    // ✅ Helper functions
+    // Helper functions
     const formatDate = (dateString) =>
         dateString ? new Date(dateString).toISOString().split("T")[0] : "-";
 
@@ -110,7 +110,7 @@ function SampleList() {
         }
     };
 
-    // ✅ Centralized batch action handler
+    // Centralized batch action handler
     const handleBatchAction = async (actionType) => {
         if (selectedSamples.length === 0) {
             setSnackbar({
@@ -156,7 +156,7 @@ function SampleList() {
             }
         }
 
-        // ✅ Snackbar messages
+        // Snackbar messages
         if (invalidSamples.length > 0) {
             setSnackbar({
                 open: true,
@@ -209,59 +209,40 @@ function SampleList() {
                     Samples List
                 </Typography>
 
-                {/* 🔍 Search, Filter & Action Buttons */}
+                {/* Search, Filter & Action Buttons */}
                 <Stack
-
                     direction="row"
-
                     alignItems="center"
-
                     justifyContent="space-between"
-
                     spacing={2}
-
                     sx={{mb: 2, flexWrap: "wrap"}}
                 >
 
                     {/* Left side — Search + Filter */}
                     <Stack direction="row" spacing={2} alignItems="center" sx={{flexGrow: 1}}>
                         <TextField
-
                             label="Search"
-
                             placeholder="Search by ID, Description, or Requester"
-
                             variant="outlined"
-
                             size="small"
-
                             value={searchTerm}
-
                             onChange={(e) => setSearchTerm(e.target.value)}
-
                             InputProps={{
-
                                 startAdornment: (
                                     <InputAdornment position="start">
                                         <SearchIcon/>
                                     </InputAdornment>
-
                                 ),
 
                             }}
-
                             sx={{width: "55ch"}} // 👈 narrower search bar
-
                         />
 
                         <FormControl sx={{minWidth: 160}} size="small">
                             <InputLabel>Status</InputLabel>
                             <Select
-
                                 value={filterStatus}
-
                                 label="Status"
-
                                 onChange={(e) => setFilterStatus(e.target.value)}
                             >
                                 <MenuItem value="All">All</MenuItem>
@@ -275,51 +256,31 @@ function SampleList() {
                     {/* Right side — Action Buttons */}
                     <Stack direction="row" spacing={1}>
                         <Button
-
                             variant="contained"
-
                             color="warning"
-
                             onClick={() => handleBatchAction("start")}
-
                             sx={{minWidth: 100}}
-                        >
-
-                            Start
-                        </Button>
+                        >Start</Button>
                         <Button
-
                             variant="contained"
-
                             color="primary"
-
                             onClick={() => handleBatchAction("complete")}
-
                             sx={{minWidth: 100}}
-                        >
-
-                            Complete
+                        >Complete
                         </Button>
                         <Button
-
                             variant="outlined"
-
                             color="error"
-
                             startIcon={<DeleteIcon/>}
-
                             onClick={() => handleBatchAction("delete")}
-
                             sx={{minWidth: 100}}
-                        >
-
-                            Delete
+                        >Delete
                         </Button>
                     </Stack>
                 </Stack>
 
 
-                {/* 🧾 Samples Table */}
+                {/* Samples Table */}
                 <TableContainer>
                     <Table>
                         <TableHead>

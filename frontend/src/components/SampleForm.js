@@ -42,7 +42,7 @@ function SampleForm() {
         e.preventDefault();
         setSubmitted(false);
 
-        // 🔒 Validation
+        //Validation
         if (!sample.requestedBy.trim()) {
             setDialogMessage("Requested By cannot be empty!");
             setIsSuccess(false);
@@ -59,7 +59,7 @@ function SampleForm() {
         const count = quantity ? parseInt(quantity) : 1;
 
         try {
-            // Only send necessary fields
+            // Only sends necessary fields
             const payload = {
                 description: sample.description,
                 requestedBy: sample.requestedBy,
@@ -77,7 +77,7 @@ function SampleForm() {
             setIsSuccess(true);
             setDialogOpen(true);
 
-            // Reset form
+            // Resets form
             setSample({
                 sampleId: "(Auto)",
                 description: "",
@@ -98,10 +98,10 @@ function SampleForm() {
         setSubmitted(false)
 
         if (isSuccess) {
-            // Redirect to home
+            // Redirects to home
             navigate("/home");
         } else {
-            // Stay on the same form (Create Sample)
+            // Stays on the same form (Create Sample)
             navigate("/create");
         }
     };

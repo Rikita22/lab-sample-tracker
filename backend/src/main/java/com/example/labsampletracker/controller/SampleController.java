@@ -38,6 +38,7 @@ public class SampleController {
 
     // Gets paginated samples by status
     // Example: GET /api/samples/status/Created?page=0&size=5&sort=createdDate,desc
+    // backend pagination API.get(`/samples/status/${filterStatus}?page=${currentPage - 1}&size=5`);
     @GetMapping("/status/{status}")
 
     public Page<Sample> listByStatus(@PathVariable String status, Pageable pageable) {
@@ -45,11 +46,10 @@ public class SampleController {
 
     }
 
-    // Gets single sample by ID
+    // Gets single sample by ID , this API will show full details for a specific sample.
     @GetMapping("/{id}")
 
     public ResponseEntity<Sample> get(@PathVariable String id) {
-
         return service.get(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
 
     }
@@ -75,11 +75,8 @@ public class SampleController {
     public ResponseEntity<Sample> update(@PathVariable String id, @RequestBody Sample s) {
 
         if (service.get(id).isEmpty()) {
-
             return ResponseEntity.notFound().build();
-
         }
-
         return ResponseEntity.ok(service.update(id, s));
 
     }
